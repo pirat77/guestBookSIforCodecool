@@ -29,13 +29,14 @@ public class StaticServlet extends HttpServlet {
                 "   let content = document.getElementById('content').value;" +
                 "   let time = Date.now();" +
                 "   apiRequest(name, content, time);" +
+                "   location.reload();" +
                 "};";
     }
 
     private String createApiRequest(){
         return  "let apiRequest = function(name, content, date){" +
                 "let xhr = new XMLHttpRequest();\n" +
-                "xhr.open(\"POST\", \"http://localhost:8080/guestbook\", true);\n" +
+                "xhr.open(\"POST\", \"http://localhost:8080/guestbook\", false);\n" +
                 "xhr.setRequestHeader('Content-Type', 'application/json');\n" +
                 "xhr.send(JSON.stringify({\n" +
                 "   'name': name,\n" +

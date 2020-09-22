@@ -1,6 +1,6 @@
 let apiRequest = function(name, content, date){
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:8080/guestbook", true);
+    xhr.open("POST", "http://localhost:8080/guestbook", false);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
         'name': name,

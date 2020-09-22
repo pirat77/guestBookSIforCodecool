@@ -1,6 +1,6 @@
 let apiRequest = function(name, content, date){
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:8080/guestbook", true);
+    xhr.open("POST", "http://localhost:8080/guestbook", false);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
         'name': name,
@@ -13,4 +13,6 @@ let postForm = function(){
     apiRequest(name, content, time);};
 document.querySelector('[type="submit"]').addEventListener('click', function (event){
     event.preventDefault();
-    postForm();});
+    postForm();
+    location.reload();
+});
