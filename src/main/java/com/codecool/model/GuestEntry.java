@@ -1,12 +1,13 @@
 package com.codecool.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.time.LocalDate;
+import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity(name = "GuestEntry")
@@ -19,12 +20,13 @@ public class GuestEntry {
     private String content;
 
     @Column(name="date")
-    private LocalDate date;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private Date date;
 
     @JsonCreator
     public GuestEntry(@JsonProperty("name") String name,
                       @JsonProperty("content") String content,
-                      @JsonProperty("date") LocalDate date){
+                      @JsonProperty("date") Date date){
         this.content = content;
         this.date = date;
         this.name = name;
@@ -38,7 +40,7 @@ public class GuestEntry {
         this.content = content;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -50,7 +52,7 @@ public class GuestEntry {
         return content;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 }

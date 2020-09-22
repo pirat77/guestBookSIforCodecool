@@ -9,7 +9,7 @@ let apiRequest = function(name, content, date){
 let postForm = function(){
     let name = document.getElementById('name').value;
     let content = document.getElementById('content').value;
-    let time = Date.getTime();
+    let time = Date.now();
     apiRequest(name, content, time);};
 document.querySelector('[type="submit"]').addEventListener('click', function (event){
     event.preventDefault();

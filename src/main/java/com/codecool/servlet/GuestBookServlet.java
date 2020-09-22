@@ -85,6 +85,20 @@ public class GuestBookServlet extends HttpServlet {
         System.out.println(guestEntry.getContent());
         System.out.println(guestEntry.getDate().toString());
         guestBook.addEntry(guestEntry);
+        PrintWriter out = resp.getWriter();
+        resp.setCharacterEncoding("UTF-8");
+        resp.setContentType("text/html");
+        String bookContainer = createBookContainer();
+        System.out.println(bookContainer);
+        out.println(
+                "<html>\n" +
+                        header +
+                        topBanner +
+                        "<body>\n" +
+                        bookContainer +
+                        bottomForm +
+                        "</body></html>"
+        );
     }
 
     @Override
