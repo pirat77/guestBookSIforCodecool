@@ -50,7 +50,7 @@ public class GuestBookServlet extends HttpServlet {
                 "  <label for='content'>Content:</label><br>" +
                 "  <input type='text' id='content' name='content'><br>" +
                 "  <input type='submit' value='Submit!'>" +
-                "</form> " +
+                " </form>" +
                 "</div>";
     }
 
@@ -93,7 +93,6 @@ public class GuestBookServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         String bookContainer = createBookContainer();
-
         out.println(
                 "<html>\n" +
                         header +
