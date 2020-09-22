@@ -1,0 +1,4 @@
+com/codecool/model/GuestBook.class
+com/codecool/servlet/GuestBookServlet.class
+com/codecool/model/GuestEntry.class
+com/codecool/servlet/StaticServlet.class
