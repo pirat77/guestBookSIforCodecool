@@ -1,6 +1,8 @@
 package com.codecool.servlet;
 
 import com.codecool.model.GuestBook;
+import com.codecool.model.GuestEntry;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +18,12 @@ public class GuestBookServlet extends HttpServlet {
     private String header;
     private String bottomForm;
     private String topBanner;
+    private ObjectMapper objectMapper;
 
     @Override
     public void init() throws ServletException {
         super.init();
+        this.objectMapper = new ObjectMapper();
         this.guestBook = new GuestBook();
         header = createHeader();
         topBanner = createTopBanner();
@@ -72,6 +76,15 @@ public class GuestBookServlet extends HttpServlet {
         buffer.append("</ul>");
         buffer.append("</div>");
         return buffer.toString();
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        GuestEntry guestEntry = objectMapper.readValue(req.getReader(), GuestEntry.class);
+        System.out.println(guestEntry.getName());
+        System.out.println(guestEntry.getContent());
+        System.out.println(guestEntry.getDate().toString());
+        guestBook.addEntry(guestEntry);
     }
 
     @Override
